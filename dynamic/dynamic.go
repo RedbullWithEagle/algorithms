@@ -1,5 +1,7 @@
 package dynamic
 
+import "fmt"
+
 //fib 斐波那契数列  递归算法
 func fib(target int) int {
 	if target == 0 {
@@ -46,4 +48,15 @@ func CoinChange(coins []int, target int,mem map[int]int) int {
 
 	mem[target] = res
 	return res
+}
+
+var mem map[int]int
+
+func testCoin() {
+	//硬币
+	coins := []int{1, 2, 5}
+
+	mem = make(map[int]int)
+
+	fmt.Println(CoinChange(coins, 11, mem))
 }

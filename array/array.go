@@ -55,6 +55,40 @@ func BSearch(nums []int, target int) int {
 	return -1
 }
 
+func testBinarySearch() {
+	nums1 := []int{1, 5, 8, 12, 34, 45, 46, 78, 88}
+	//nums2:= []int{2,2}
+	//nums3:= []int{}
+
+	fmt.Println(nums1)
+	for i := 0; i < len(nums1); i++ {
+		tmp := BSearch(nums1, nums1[i])
+		fmt.Println(nums1[i], "  result is ", tmp)
+	}
+	/*result1 := bs.BSearch(nums1,23)
+	result11 := bs.BSearch(nums1,78)
+	result88 := bs.BSearch(nums1,88)
+	result101 := bs.BSearch(nums1,1)
+	fmt.Println(nums1)
+	fmt.Println("23 result:",result1)
+	fmt.Println("78 result:",result11)
+	fmt.Println("88 result:",result88)
+	fmt.Println("1 result:",result101)
+	fmt.Println("----------------------------")
+
+	result2 := bs.BSearch(nums2,8)
+	result22 := bs.BSearch(nums2,2)
+	fmt.Println("8 result:",result2)
+	fmt.Println("2 result:",result22)
+	fmt.Println("----------------------------")
+
+	result3 := bs.BSearch(nums3,8)
+	result33 := bs.BSearch(nums3,2)
+	fmt.Println("8 result:",result3)
+	fmt.Println("2 result:",result33)
+	fmt.Println("----------------------------")*/
+}
+
 func threeSum(nums []int) [][]int {
 	ret := make([][]int, 0, 1024)
 	nLen := len(nums)
