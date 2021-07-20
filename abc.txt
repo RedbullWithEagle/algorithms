@@ -1,0 +1,21 @@
+1.先压admininfo
+  管理员和非管理员
+2.datainfo
+  1+8和开黑模板，加线程数
+1.admininfo
+   6：45      redis   cpu连接数  500%
+__source__:  10.254.39.204
+__tag__:__hostname__:  app.a254-39-204.prod.ali-bj-g
+__tag__:__path__:  /home/www/logs/applogs/bj-audiosocial-app-chatlove-go/0e91bb70564233567decf045073d1f32/default.json
+__tag__:__receive_time__:  1602629120
+__tag__:__user_defined_id__:  bj-golang-common-group bj-java-common-group web-idc-bj-ngx-group web-yuba-ngx-group
+__topic__:  
+aid:  14253
+error:  dial tcp 10.254.101.103:6379: i/o timeout
+iid:  0e91bb70564233567decf045073d1f32
+lv:  error
+msg:  failed to get user by token from redis
+token:  366381965_11_9d2baf7721c0a1ac_2_40187407
+ts:  1602629120
+1.redis  登录  与报警
+2.data

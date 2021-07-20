@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/algorithms/list"
+	"github.com/algorithms/file"
 )
 
 func main()  {
-	list.TestAddTwoNum()
+	//list.TestAddTwoNum()
+	file.TestRandomLine()
 }
