@@ -1,9 +1,9 @@
-1.ÏÈÑ¹admininfo
-  ¹ÜÀíÔ±ºÍ·Ç¹ÜÀíÔ±
+1.å…ˆå‹admininfo
+  ç®¡ç†å‘˜å’Œéç®¡ç†å‘˜
 2.datainfo
-  1+8ºÍ¿ªºÚÄ£°å£¬¼ÓÏß³ÌÊı
+  1+8å’Œå¼€é»‘æ¨¡æ¿ï¼ŒåŠ çº¿ç¨‹æ•°
 1.admininfo
-   6£º45      redis   cpuÁ¬½ÓÊı  500%
+   6ï¼š45      redis   cpuè¿æ¥æ•°  500%
 __source__:  10.254.39.204
 __tag__:__hostname__:  app.a254-39-204.prod.ali-bj-g
 __tag__:__path__:  /home/www/logs/applogs/bj-audiosocial-app-chatlove-go/0e91bb70564233567decf045073d1f32/default.json
@@ -17,5 +17,5 @@ lv:  error
 msg:  failed to get user by token from redis
 token:  366381965_11_9d2baf7721c0a1ac_2_40187407
 ts:  1602629120
-1.redis  µÇÂ¼  Óë±¨¾¯
+1.redis  ç™»å½•  ä¸æŠ¥è­¦
 2.data
