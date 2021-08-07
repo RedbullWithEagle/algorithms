@@ -6,6 +6,8 @@ import (
 	"io"
 	"math/rand"
 	"os"
+	"strconv"
+	"strings"
 )
 
 /*************************************************************
@@ -41,6 +43,13 @@ func RandomLine(path string) string {
 		//Int31n
 		randCount := rand.Int31n(100)
 		if randCount <= randI {
+			//去掉换行符
+			//Trim只能去掉开头和结尾
+			line = strings.TrimRight(line, "\n")
+			line = strings.TrimRight(line, "\r")
+			//Replace可以替换所有
+			//line  = strings.Replace(line,"\n","",-1)
+			//line  = strings.Replace(line,"\r","",-1)
 			str = line
 		}
 	}
@@ -48,13 +57,41 @@ func RandomLine(path string) string {
 	return str
 }
 
+//ReadUIntFromFile 从文件中读取每行转化为uint32
+func ReadUIntFromFile(path string) []uint32 {
+	f, err := os.Open(path)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
 
-func TestRandomLine(){
+	ret := make([]uint32, 0)
+	rd := bufio.NewReader(f)
+	for {
+		line, err := rd.ReadString('\n') //以'\n'为结束符读入一行
+
+		if err != nil || io.EOF == err {
+			break
+		}
+		line = strings.TrimRight(line, "\n")
+		line = strings.TrimRight(line, "\r")
+		tmp, err := strconv.ParseUint(line, 10, 32)
+		if err != nil {
+			continue
+		}
+		ret = append(ret, uint32(tmp))
+	}
+
+	return ret
+}
+
+func TestRandomLine() {
 	//获取当前路径
-	pwd,_ := os.Getwd()
+	pwd, _ := os.Getwd()
 	fmt.Println(pwd)
 
 	//test
 	path := "./abc.txt"
 	fmt.Println(RandomLine(path))
+	fmt.Println("Over")
 }

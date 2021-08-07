@@ -1,21 +1,17 @@
-1.ÏÈÑ¹admininfo
-  ¹ÜÀíÔ±ºÍ·Ç¹ÜÀíÔ±
-2.datainfo
-  1+8ºÍ¿ªºÚÄ£°å£¬¼ÓÏß³ÌÊı
-1.admininfo
-   6£º45      redis   cpuÁ¬½ÓÊı  500%
-__source__:  10.254.39.204
-__tag__:__hostname__:  app.a254-39-204.prod.ali-bj-g
-__tag__:__path__:  /home/www/logs/applogs/bj-audiosocial-app-chatlove-go/0e91bb70564233567decf045073d1f32/default.json
-__tag__:__receive_time__:  1602629120
-__tag__:__user_defined_id__:  bj-golang-common-group bj-java-common-group web-idc-bj-ngx-group web-yuba-ngx-group
+1.
+2.
+3
+6ï¼š45
+__source__:
+__tag__:__hostname__:
+__tag__:__path__:
+__tag__:__receive_time__:
+__tag__:__user_defined_id__:
 __topic__:  
-aid:  14253
-error:  dial tcp 10.254.101.103:6379: i/o timeout
+aid:
+error:
 iid:  0e91bb70564233567decf045073d1f32
 lv:  error
 msg:  failed to get user by token from redis
-token:  366381965_11_9d2baf7721c0a1ac_2_40187407
-ts:  1602629120
-1.redis  µÇÂ¼  Óë±¨¾¯
-2.data
+token:
+ts:
