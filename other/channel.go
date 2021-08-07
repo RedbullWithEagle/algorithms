@@ -53,6 +53,10 @@ func fish(dogChan, fishChan chan int, wg *sync.WaitGroup) {
 	}
 }
 
+/***************************************************
+*有三个方法，分别打印dog，cat,fish
+*要求按顺序打印，100次
+*****************************************************/
 func TestPrintAnimals() {
 	var wg sync.WaitGroup
 	//注意这里使用有缓存的
@@ -66,5 +70,21 @@ func TestPrintAnimals() {
 	go dog(dogChan, catChan, &wg)
 	go cat(fishChan, catChan, &wg)
 	go fish(dogChan, fishChan, &wg)
+	wg.Wait()
+}
+
+func PrintThree() {
+	var wg sync.WaitGroup
+	//var catCounter, dogCounter, fishCounter uint32
+	var catChan, dogChan, fishChan chan int
+	catChan = make(chan int)
+	dogChan = make(chan int)
+	fishChan = make(chan int)
+	wg.Add(3)
+	go dog(dogChan, catChan, &wg)
+	go cat(fishChan, catChan, &wg)
+	go fish(dogChan, fishChan, &wg)
+	//无缓冲的channel，必须将cat初始化放在这，否则会因为没有接受者而阻塞
+	catChan <- 1
 	wg.Wait()
 }
