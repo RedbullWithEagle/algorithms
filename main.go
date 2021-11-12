@@ -2,8 +2,9 @@ package main
 
 import "github.com/algorithms/other"
 
-func main()  {
+func main() {
 	//list.TestAddTwoNum()
 	//file.TestRandomLine()
-	other.TestPrintAnimals()
+	//other.TestFloat()
+	other.TestOKMap()
 }
