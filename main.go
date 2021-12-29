@@ -6,5 +6,5 @@ func main() {
 	//list.TestAddTwoNum()
 	//file.TestRandomLine()
 	//other.TestFloat()
-	other.TestOKMap()
+	other.TestDivide()
 }

@@ -22,16 +22,7 @@ func ReverseArray(source []int) []int {
 	return source
 }
 
-func TestDivide() {
-	//结论： 整数除法取 floor
-	a := 3 / 2 //1.6 result=1
-	b := 9 / 5 //1.8 result=1
-	c := 8 / 7 //1.15 result=1
 
-	fmt.Println("3/2=", a)
-	fmt.Println("9/5=", b)
-	fmt.Println("8/7=", c)
-}
 
 //BSearch 基本的二分查找
 func BSearch(nums []int, target int) int {
