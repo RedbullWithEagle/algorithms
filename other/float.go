@@ -1,6 +1,9 @@
 package other
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /***********************************************
 1.计算机无法精确表示浮点数，大多数采用IEEE计数
@@ -56,18 +59,10 @@ func TestFloat() {
 
 /***************************************************************
 Math.Floor 地板
-	Math.floor(11.46)=Math.floor(11.68)=Math.floor(11.5)=11
-	Math.floor(-11.46)=Math.floor(-11.68)=Math.floor(-11.5)=-12
-
 Math.Ceil 天花板
-	Math.ceil(11.46)=Math.ceil(11.68)=Math.ceil(11.5)=12
-	Math.ceil(-11.46)=Math.ceil(-11.68)=Math.ceil(-11.5)=-11
-
 Math.Round 四舍五入 round附近、周围
-	Math.round(11.46)=11
-	Math.round(11.5) = Math.round(11.68)=12
+这都是浮点数取整，不是浮点数保留多少位
 ***************************************************************/
-
 func TestDivide() {
 	//结论： 整数除法取 floor
 	a := 3 / 2 //1.6 result=1
@@ -77,4 +72,20 @@ func TestDivide() {
 	fmt.Println("3/2=", a)
 	fmt.Println("9/5=", b)
 	fmt.Println("8/7=", c)
+
+	fmt.Println("=========MATH.Floor============")
+	fmt.Println(math.Floor(11.46))   //11
+	fmt.Println(math.Floor(11.68))   //11
+	fmt.Println(math.Floor(11.5))   //11
+
+
+	fmt.Println("=========MATH.Ceil============")
+	fmt.Println(math.Ceil(11.46))		//12
+	fmt.Println(math.Ceil(11.68))		//12
+	fmt.Println(math.Ceil(11.5))		//12
+
+	fmt.Println("=========MATH.Round============")
+	fmt.Println(math.Round(11.46))	//11
+	fmt.Println(math.Round(11.68))	//12
+	fmt.Println(math.Round(11.5))		//12
 }

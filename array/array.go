@@ -1,6 +1,8 @@
 package array
 
-import "fmt"
+import (
+	"fmt"
+)
 
 //ReverseArray 反转数组
 func ReverseArray(source []int) []int {
@@ -21,8 +23,6 @@ func ReverseArray(source []int) []int {
 
 	return source
 }
-
-
 
 //BSearch 基本的二分查找
 func BSearch(nums []int, target int) int {
@@ -125,6 +125,10 @@ func removeDuplicates(nums []int) int {
 	return len(nums)
 }
 
+/*********************************************
+*No.26 删除有序数组中的重复项
+*采用双指针算法
+********************************************/
 func removeDuplicatesGF(nums []int) int {
 	n := len(nums)
 	if n == 0 {
@@ -141,14 +145,68 @@ func removeDuplicatesGF(nums []int) int {
 }
 
 func TestArray() {
-	nums := []int{1, 2, 3, 4, 5, 6, 7, 8}
+	fmt.Println(countAndSay(1))
+	fmt.Println(countAndSay(2))
+	fmt.Println(countAndSay(3))
+	fmt.Println(countAndSay(4))
+	fmt.Println(countAndSay(5))
+	fmt.Println(countAndSay(6))
+	fmt.Println(countAndSay(7))
+	/*nums := []int{1, 2, 3, 4, 5, 6, 7, 8}
 
 	fmt.Println(removeDuplicatesGF(nums))
-	fmt.Println(nums)
+	fmt.Println(nums)*/
 	/*l1 := makeListNode([]int{1,2,3,4,5})
 	tmp := removeNthFromEnd(l1, 2)
 	Traversal(tmp)
 	l2 := makeListNode([]int{1, 3, 4})
 	l3 := mergeTwoLists(l1, l2)
 	Traversal(l3)*/
+}
+
+/*********************************************
+*No.38 外观数列
+*1.   1
+*2.   11
+*3.   21
+*4.   12 11
+********************************************/
+func countAndSay(n int) string {
+	if n < 1 || n > 30 {
+		return ""
+	}
+
+	if n == 1 {
+		return "1"
+	}
+	retStr := ""
+	strBefore := countAndSay(n - 1)
+	nLen := len(strBefore)
+	if nLen == 0 {
+		return ""
+	}
+	var cChar uint8
+	nCount := 0
+	for i := 0; i < nLen; i++ {
+		if cChar == 0 {
+			cChar = strBefore[i]
+		}
+
+		if cChar != strBefore[i] && cChar != 0 {
+			tmp := fmt.Sprintf("%d%c", nCount, cChar)
+			retStr += tmp
+			cChar = strBefore[i]
+			nCount = 0
+		}
+
+		nCount++
+
+		if i == nLen-1 {
+			tmp := fmt.Sprintf("%d%c", nCount, cChar)
+			retStr += tmp
+			return retStr
+		}
+	}
+
+	return retStr
 }

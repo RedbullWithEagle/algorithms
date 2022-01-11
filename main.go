@@ -1,10 +1,10 @@
 package main
 
-import "github.com/algorithms/other"
+import "github.com/algorithms/dynamic"
 
 func main() {
 	//list.TestAddTwoNum()
 	//file.TestRandomLine()
 	//other.TestFloat()
-	other.TestDivide()
+	dynamic.TestCoin()
 }
