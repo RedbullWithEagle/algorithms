@@ -46,9 +46,18 @@ func MakeListNode(nums []int) *ListNode {
 
 //Traversal  遍历链表
 func Traversal(l1 *ListNode) {
+	//这样遍历，l1指向nil
 	for l1 != nil {
 		fmt.Print(l1.Val, "  ")
 		l1 = l1.Next
+	}
+	fmt.Println("\n--------------over--------------")
+}
+
+func Traverse(l1 *ListNode) {
+	//var p *ListNode
+	for p := l1; p != nil; p = p.Next {
+		fmt.Println(p.Val)
 	}
 	fmt.Println("\n--------------over--------------")
 }
@@ -70,15 +79,15 @@ func ReverseList(head *ListNode) *ListNode {
 *No.19删除链表的倒数第N个结点
 ***************************************************/
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	dummy := &ListNode{-1,head}
+	dummy := &ListNode{-1, head}
 	first := head
 	second := dummy
 
-	for i:=0;i<n;i++{
+	for i := 0; i < n; i++ {
 		first = first.Next
 	}
 
-	for first!=nil{
+	for first != nil {
 		first = first.Next
 		second = second.Next
 	}
@@ -184,13 +193,13 @@ func AddTwoNumbers(l1, l2 *ListNode) (head *ListNode) {
 	return
 }
 
-
 func TestAddTwoNum() {
 	L1 := MakeListNode([]int{2, 4, 3})
-	Traversal(L1)
+	Traverse(L1)
+	fmt.Println(L1)
 	//如果不使用Traversal遍历，而是就地遍历，需要保存L1的值
 	//遍历需要移动
-	tmp := L1
+	/*tmp := L1
 	for tmp !=nil{
 		fmt.Print(tmp.Val," ")
 		tmp = tmp.Next
@@ -202,5 +211,5 @@ func TestAddTwoNum() {
 	Traversal(L2)
 
 	result := AddTwoNumbers(L1, L2)
-	Traversal(result)
+	Traversal(result)*/
 }

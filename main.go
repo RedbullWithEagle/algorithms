@@ -1,10 +1,13 @@
 package main
 
-import "github.com/algorithms/dynamic"
+import (
+	"github.com/algorithms/tree"
+)
 
 func main() {
-	//list.TestAddTwoNum()
+	tree.TestTree()
 	//file.TestRandomLine()
 	//other.TestFloat()
-	dynamic.TestCoin()
+	//dynamic.TestCoin()
+	//array.TestArray()
 }

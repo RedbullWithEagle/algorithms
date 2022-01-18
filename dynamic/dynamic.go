@@ -15,6 +15,27 @@ func fib(target int) int {
 	return fib(target-1) + fib(target-2)
 }
 
+//fibDynamic 斐波那契数列  动态规划版本
+func fibDynamic(target int) int {
+	if target == 0 {
+		return 0
+	}
+
+	if target == 1 || target == 2 {
+		return 1
+	}
+
+	prev := 1
+	curr := 1
+
+	// 采用交换不占用额外空间
+	for i := 3; i < target; i++ {
+		sum := prev + curr
+		prev, curr = curr, sum
+	}
+	return curr
+}
+
 //coinChange 找出给定数组需要最少的硬币
 func CoinChange(coins []int, target int, mem map[int]int) int {
 	if target == 0 {
