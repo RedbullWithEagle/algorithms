@@ -1,13 +1,11 @@
 package main
 
-import (
-	"github.com/algorithms/tree"
-)
+import "github.com/algorithms/array"
 
 func main() {
-	tree.TestTree()
+	//tree.TestTree()
 	//file.TestRandomLine()
 	//other.TestFloat()
 	//dynamic.TestCoin()
-	//array.TestArray()
+	array.TestMinStr()
 }

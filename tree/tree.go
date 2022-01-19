@@ -447,3 +447,89 @@ func levelOrder2(root *TreeNode) [][]int {
 	}
 	return ret
 }
+
+/**************************************************************
+*No.103. 二叉树的锯齿形层序遍历
+*给你二叉树的根节点 root ，返回其节点值的 锯齿形层序遍历 。
+*（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）
+***************************************************************/
+func zigzagLevelOrder(root *TreeNode) [][]int {
+	ret := [][]int{}
+	if root == nil {
+		return ret
+	}
+	q := []*TreeNode{root}
+	for i := 0; len(q) > 0; i++ {
+		ret = append(ret, []int{})
+		p := []*TreeNode{}
+		for j := 0; j < len(q); j++ {
+			node := q[j]
+			ret[i] = append(ret[i], node.Val)
+			if node.Left != nil {
+				p = append(p, node.Left)
+			}
+			if node.Right != nil {
+				p = append(p, node.Right)
+			}
+		}
+
+		q = p
+		if i%2 == 1 {
+			for m, n := 0, len(ret[i]); m < n/2; m++ {
+				ret[i][m], ret[i][n-1-m] = ret[i][n-1-m], ret[i][m]
+			}
+		}
+	}
+	return ret
+}
+
+/************************************************************
+*No.104 二叉树的最大深度
+*给定一个二叉树，找出其最大深度。
+************************************************************/
+func maxDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	leftDepth := maxDepth(root.Left)
+	rightDepth := maxDepth(root.Right)
+
+	if rightDepth > leftDepth {
+		return rightDepth + 1
+	}
+
+	return leftDepth + 1
+}
+
+/************************************************************
+*No.111. 二叉树的最小深度
+*给定一个二叉树，找出其最小深度
+*最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
+************************************************************/
+func minDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	if root.Left == nil && root.Right == nil {
+		return 1
+	}
+
+	minD := math.MaxInt32
+	if root.Left != nil {
+		leftDepth := minDepth(root.Left)
+		if leftDepth < minD {
+			minD = leftDepth
+		}
+	}
+
+	if root.Right != nil {
+		rightDepth := minDepth(root.Right)
+		if rightDepth < minD {
+			minD = rightDepth
+		}
+	}
+
+	return minD + 1
+}
