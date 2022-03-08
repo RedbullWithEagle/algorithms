@@ -114,6 +114,7 @@ func (node *TreeNode) GetLeafTreeNode(n *TreeNode) {
 }
 
 func TestTree() {
+
 	//创建一颗树
 	root := CreateTreeNode(3)
 	root.Left = CreateTreeNode(9)
@@ -121,7 +122,7 @@ func TestTree() {
 	root.Right.Left = CreateTreeNode(15)
 	root.Right.Right = CreateTreeNode(7)
 
-	levelOrder2(root)
+	inorderTraversalTV2(root)
 	//root.Right.Right = CreateTreeNode(9)
 
 	//fmt.Printf("%d\n", root.FindTreeNode(root, 4).Val)
@@ -532,4 +533,37 @@ func minDepth(root *TreeNode) int {
 	}
 
 	return minD + 1
+}
+
+//中序遍历  方法一
+func inorderTraversalTV1(root *TreeNode) []int {
+	res := make([]int, 0)
+	traverseHelper(root, res)
+	return res
+}
+
+func traverseHelper(root *TreeNode, res []int) {
+	if root == nil {
+		return
+	}
+
+	traverseHelper(root.Left, res)
+	res = append(res, root.Val)
+	traverseHelper(root.Right, res)
+}
+
+//中序遍历  方法二
+func inorderTraversalTV2(root *TreeNode) (res []int) {
+	var helper func(node *TreeNode)
+	helper = func(node *TreeNode) {
+		if node == nil {
+			return
+		}
+		helper(node.Left)
+		res = append(res, node.Val)
+		helper(node.Right)
+	}
+
+	helper(root)
+	return
 }
