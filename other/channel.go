@@ -106,6 +106,7 @@ func ChannelTimeout() {
 			case num := <-ch:
 				str := fmt.Sprintf("time:%d, num = %d", time.Now().Unix(), num)
 				fmt.Println(str)
+				//这里设置超时时间，如果没有走到上面，3秒后，会走到下面
 			case <-time.After(3 * time.Second):
 				fmt.Println("超时,time:%d", time.Now().Unix())
 				quit <- true
@@ -119,4 +120,15 @@ func ChannelTimeout() {
 	}
 	<-quit
 	fmt.Println("程序结束")
+
+	/********************************************
+	*程序返回如下：
+	*time:1646815357, num = 0
+	*time:1646815358, num = 1
+	*time:1646815359, num = 2
+	*time:1646815360, num = 3
+	*time:1646815361, num = 4
+	*超时,time:%d 1646815364
+	*程序结束
+	********************************************/
 }
