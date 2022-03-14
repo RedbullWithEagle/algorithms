@@ -7,7 +7,11 @@ import (
 )
 
 const PrintCount = 10
-
+/******************************************************************
+*循环打印 dog cat fish  10次
+*
+*
+******************************************************************/
 func dog(dogChan, catChan chan int, wg *sync.WaitGroup) {
 	counter := 0
 	for {
@@ -95,7 +99,10 @@ func TestPrintAnimalsNoBuffer() {
 	wg.Wait()
 }
 
-//channel 设置接受超时时间
+/********************************************************
+*如何给channel设置超时时间
+*
+********************************************************/
 func ChannelTimeout() {
 	ch := make(chan int)
 	quit := make(chan bool)

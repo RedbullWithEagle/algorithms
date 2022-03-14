@@ -7,8 +7,9 @@ import (
 func main() {
 	//tree.TestTree()
 	//file.TestRandomLine()
-	other.ChannelTimeout()
-	//dynamic.TestCoin()
+	//other.ChannelTimeout()
 
+	//dynamic.TestCoin()
 	//other.TestSamplePro()
+	other.TestEqualStruct()
 }
