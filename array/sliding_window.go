@@ -224,16 +224,6 @@ func lengthOfLongestSubstring(s string) int {
 	return minLen
 }
 
-func TestMinStr() {
-	source := "adbecfebac"
-	//target := "ABCC"
-	//fmt.Println(GetMinString(source,target))
-	//fmt.Println(minWindowOptimization(source, target))
-	//minWindow(source,target)
-
-	fmt.Println(lengthOfLongestSubstring(source))
-}
-
 /***************************************************
 *No7  整数反转
 *给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
@@ -477,6 +467,43 @@ func myAtoi2(s string) int {
 
 }
 
+/***************************************************
+*No12 整数转罗马数字
+***************************************************/
+func intToRoman(num int) string {
+	valueSymbols := []struct {
+		value  int
+		symbol string
+	}{
+		//这里的顺序按照倒序排列
+		{1000, "M"},
+		{900, "CM"},
+		{500, "D"},
+		{400, "CD"},
+		{100, "C"},
+		{90, "XC"},
+		{50, "L"},
+		{40, "XL"},
+		{10, "X"},
+		{9, "IX"},
+		{5, "V"},
+		{4, "IV"},
+		{1, "I"},
+	}
+
+	roman := make([]byte, 0)
+	for _, vs := range valueSymbols {
+		for num >= vs.value {
+			num -= vs.value
+			roman = append(roman, vs.symbol...)
+		}
+		if num == 0 {
+			break
+		}
+	}
+	return string(roman)
+}
+
 /**************************************************
 No13  罗马数字转整数
 *************************************************/
@@ -515,6 +542,7 @@ func romanToIntOptimize(s string) int {
 
 	return ret
 }
+
 /*********************************************************
 No.20有效的括号
 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
@@ -547,6 +575,8 @@ func isValid(s string) bool {
 	return true
 }
 
+
+
 func TestReverse() {
 	strSign := []string{"()", "()[]{}", "(]", "([)]", "{[]}"}
 	for _, v := range strSign {
@@ -573,4 +603,16 @@ func TestReverse() {
 
 	  a2:= -3435634
 	  fmt.Println(reverse(a2))*/
+}
+
+func TestMinStr() {
+	//source := "adbecfebac"
+	target := 3
+	fmt.Println(intToRoman(target))
+	//target := "ABCC"
+	//fmt.Println(GetMinString(source,target))
+	//fmt.Println(minWindowOptimization(source, target))
+	//minWindow(source,target)
+
+	//fmt.Println(lengthOfLongestSubstring(source))
 }

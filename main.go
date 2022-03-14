@@ -1,9 +1,15 @@
 package main
 
-import "github.com/algorithms/other"
+import (
+	"github.com/algorithms/other"
+)
 
-func main()  {
-	//list.TestAddTwoNum()
+func main() {
+	//tree.TestTree()
 	//file.TestRandomLine()
-	other.TestPrintAnimals()
+	//other.ChannelTimeout()
+
+	//dynamic.TestCoin()
+	//other.TestSamplePro()
+	other.TestSamplePro()
 }
