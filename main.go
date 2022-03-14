@@ -11,5 +11,5 @@ func main() {
 
 	//dynamic.TestCoin()
 	//other.TestSamplePro()
-	other.TestEqualStruct()
+	other.TestSamplePro()
 }
