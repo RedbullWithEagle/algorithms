@@ -1,9 +1,5 @@
 package main
 
-import (
-	"github.com/algorithms/other"
-)
-
 func main() {
 	//tree.TestTree()
 	//file.TestRandomLine()
@@ -11,5 +7,5 @@ func main() {
 
 	//dynamic.TestCoin()
 	//other.TestSamplePro()
-	other.TestSamplePro()
+	//other.TestSamplePro()
 }

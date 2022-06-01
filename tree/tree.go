@@ -117,12 +117,25 @@ func TestTree() {
 
 	//创建一颗树
 	root := CreateTreeNode(3)
-	root.Left = CreateTreeNode(9)
-	root.Right = CreateTreeNode(20)
-	root.Right.Left = CreateTreeNode(15)
-	root.Right.Right = CreateTreeNode(7)
+	node9 := CreateTreeNode(9)
+	node20 := CreateTreeNode(20)
+	node88 := CreateTreeNode(88)
+	node99 := CreateTreeNode(99)
+	node15 := CreateTreeNode(15)
+	node7 := CreateTreeNode(7)
 
-	inorderTraversalTV2(root)
+	node188 := CreateTreeNode(188)
+	node777 := CreateTreeNode(777)
+
+	root.Left = node9
+	root.Right = node20
+	node9.Left = node88
+	node9.Right = node99
+	node88.Left = node15
+	node88.Right = node7
+	node7.Right = node188
+	node7.Left = node777
+	zigzagLevelOrder(root)
 	//root.Right.Right = CreateTreeNode(9)
 
 	//fmt.Printf("%d\n", root.FindTreeNode(root, 4).Val)
@@ -475,11 +488,11 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 		}
 
 		q = p
-		if i%2 == 1 {
+		/*if i%2 == 1 {
 			for m, n := 0, len(ret[i]); m < n/2; m++ {
 				ret[i][m], ret[i][n-1-m] = ret[i][n-1-m], ret[i][m]
 			}
-		}
+		}*/
 	}
 	return ret
 }
@@ -566,4 +579,32 @@ func inorderTraversalTV2(root *TreeNode) (res []int) {
 
 	helper(root)
 	return
+}
+
+// BFS 广度优先遍历
+func BreadthFirstTraverse(root *TreeNode) {
+	if root == nil {
+		return
+	}
+
+	var ret []int
+	nodes := []*TreeNode{root}
+	for len(nodes) > 0 {
+		curNode := nodes[0]
+		//每次遍历，把当前节点从数组中去掉
+		nodes = nodes[1:]
+		ret = append(ret, curNode.Val)
+
+		if curNode.Left != nil {
+			nodes = append(nodes, curNode.Left)
+		}
+
+		if curNode.Right != nil {
+			nodes = append(nodes, curNode.Right)
+		}
+	}
+
+	for _, v := range ret {
+		fmt.Println(v)
+	}
 }
