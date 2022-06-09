@@ -1,5 +1,11 @@
 package main
 
+import (
+	"github.com/algorithms/sort"
+	"math/rand"
+	"time"
+)
+
 func main() {
 	//tree.TestTree()
 	//file.TestRandomLine()
@@ -8,4 +14,7 @@ func main() {
 	//dynamic.TestCoin()
 	//other.TestSamplePro()
 	//other.TestSamplePro()
+
+	rand.Seed(time.Now().Unix())
+	sort.ValidFunc(100)
 }
