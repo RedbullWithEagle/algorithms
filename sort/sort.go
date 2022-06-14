@@ -3,7 +3,6 @@ package sort
 import (
 	"fmt"
 	"math/rand"
-	"sort"
 )
 
 /****************************************************
@@ -105,6 +104,73 @@ func InsertSort(arr []int) {
 	}
 }
 
+/****************************************************
+*MergeSort 归并排序
+*采用分治的思想，将数组分成左右两部分，两部分排好序后，合并
+*时间复杂度：O(NlogN)
+*空间复杂度：O(N)
+*可以变成稳定排序
+****************************************************/
+func MergeSort(arr []int, left, right int) {
+	//这里是错误写法，要判断left和right,而不是arr的长度
+	/*if len(arr) < 2 {
+		return arr
+	}*/
+	if left == right {
+		return
+	}
+
+	//求中点的标准写法，不要写成（left+right)/2
+	//也不要写成 left + (right-left)/2
+	mid := left + (right-left)>>2
+	MergeSort(arr, left, mid)
+	MergeSort(arr, mid+1, right)
+	MergeArray(arr, left, mid, right)
+}
+
+/****************************************************
+*MergeArray 合并数组中的两个子有序数组
+*
+****************************************************/
+func MergeArray(arr []int, L, M, R int) {
+	help := make([]int, R-L+1, R-L+1)
+	i := 0
+	p1 := L
+	p2 := M + 1
+
+	//如果左右两个子数组都不为空
+	for ; p1 <= M && p2 <= R; {
+		if arr[p1] <= arr[p2] {
+			help[i] = arr[p1]
+			i++
+			p1++
+		} else {
+			help[i] = arr[p2]
+			i++
+			p2++
+		}
+	}
+
+	//左子数组不为空
+	for ; p1 <= M; {
+		help[i] = arr[p1]
+		i++
+		p1++
+	}
+
+	//右子数组不为空
+	for ; p2 <= R; {
+		help[i] = arr[p2]
+		i++
+		p2++
+	}
+
+	//最后拷贝到原数组中
+	for j := 0; j < len(help); j++ {
+		arr[L+j] = help[j]
+	}
+}
+
 /******************************************************
 *1.GenerateRandomArr
 *随机生成随机长度，随机数值的数组
@@ -124,12 +190,16 @@ func GenerateRandomArr(maxLen, maxValue int) []int {
 	return arr
 }
 
+/******************************************************
+*1.ValidFunc
+*验证算法是否正确
+******************************************************/
 func ValidFunc(count uint32) bool {
 	if count == 0 {
 		return false
 	}
 	success := true
-	maxSize := 100
+	maxSize := 50
 	maxValue := 100
 	for i := 0; i < int(count); i++ {
 		arr := GenerateRandomArr(maxSize, maxValue)
@@ -138,7 +208,9 @@ func ValidFunc(count uint32) bool {
 		copy(arr2, arr)
 		fmt.Println("------------")
 
-		InsertSort(arr)
+		NetherlandsFlag1(arr, 0, len(arr)-1, 30)
+		fmt.Println(arr)
+		/*MergeSort(arr, 0, len(arr)-1)
 		sort.Ints(arr2)
 		if !isEqual(arr, arr2) {
 			success = false
@@ -147,7 +219,7 @@ func ValidFunc(count uint32) bool {
 		if !success {
 			fmt.Println(arr2)
 			fmt.Println("false")
-		}
+		}*/
 		fmt.Println("---------------------------------------------------------------------------------------------")
 	}
 
@@ -170,4 +242,55 @@ func isEqual(arr1, arr2 []int) bool {
 	}
 
 	return true
+}
+
+/******************************************************
+*HLNationalFlag1  荷兰国旗问题1（自己的写法）
+*给定一个数组arr，和一个数num，把小于num的数放在数组的左边
+*大于num的数放在数组的右边
+******************************************************/
+func HLNationalFlag1(arr []int, num int) {
+	smallIndex := -1
+	bigIndex := len(arr)
+	for i := 0; i < len(arr); i++ {
+		if smallIndex >= bigIndex {
+			return
+		}
+
+		if arr[i] <= num {
+			smallIndex++
+		} else {
+			for ; arr[i] > num; {
+				if bigIndex >= 0 && smallIndex <= bigIndex {
+					Swap(arr, i, bigIndex-1)
+					bigIndex--
+				} else {
+					break
+				}
+
+			}
+		}
+	}
+}
+
+/******************************************************
+*NetherlandsFlag1  荷兰国旗问题1
+*正确的写法
+******************************************************/
+func NetherlandsFlag1(arr []int, l, r, num int) {
+	less := l - 1
+	more := r + 1
+
+	for ; l < more; {
+		if arr[l] < num {
+			less++
+			Swap(arr, less, l)
+			l++
+		} else if arr[l] > num {
+			more--
+			Swap(arr, more, l)
+		} else {
+			l++
+		}
+	}
 }
