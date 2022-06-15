@@ -3,6 +3,7 @@ package sort
 import (
 	"fmt"
 	"math/rand"
+	"sort"
 )
 
 /****************************************************
@@ -208,9 +209,9 @@ func ValidFunc(count uint32) bool {
 		copy(arr2, arr)
 		fmt.Println("------------")
 
-		NetherlandsFlag1(arr, 0, len(arr)-1, 30)
-		fmt.Println(arr)
-		/*MergeSort(arr, 0, len(arr)-1)
+		/*NetherlandsFlag2(arr, 0, len(arr)-1, 30)
+		fmt.Println(arr)*/
+		QuickSort(arr, 0, len(arr)-1)
 		sort.Ints(arr2)
 		if !isEqual(arr, arr2) {
 			success = false
@@ -219,7 +220,7 @@ func ValidFunc(count uint32) bool {
 		if !success {
 			fmt.Println(arr2)
 			fmt.Println("false")
-		}*/
+		}
 		fmt.Println("---------------------------------------------------------------------------------------------")
 	}
 
@@ -275,22 +276,146 @@ func HLNationalFlag1(arr []int, num int) {
 
 /******************************************************
 *NetherlandsFlag1  荷兰国旗问题1
-*正确的写法
+*<=num的放左边     >num放右边
+*思路：
 ******************************************************/
 func NetherlandsFlag1(arr []int, l, r, num int) {
 	less := l - 1
 	more := r + 1
+	cur := l //当前数更好理解
 
-	for ; l < more; {
-		if arr[l] < num {
+	for ; cur < more; {
+		if arr[cur] < num {
 			less++
-			Swap(arr, less, l)
-			l++
-		} else if arr[l] > num {
+			Swap(arr, less, cur)
+			cur++
+		} else if arr[cur] > num {
 			more--
-			Swap(arr, more, l)
+			Swap(arr, more, cur)
 		} else {
-			l++
+			cur++
 		}
+	}
+}
+
+/******************************************************
+*NetherlandsFlag2  荷兰国旗问题2
+*正确的写法
+*小于num的放左边   =num放中间    >num放右边
+******************************************************/
+func NetherlandsFlag2(arr []int, l, r, num int) {
+	less := l - 1
+	more := r + 1
+	cur := l //当前数更好理解
+
+	for ; cur < more; {
+		if arr[cur] < num {
+			less++
+			Swap(arr, less, cur)
+			cur++
+		} else if arr[cur] > num {
+			more--
+			Swap(arr, more, cur)
+		} else {
+			cur++
+		}
+	}
+}
+
+/****************************************************************************
+*快排1.0
+*选最后一个数，当pivot(主元)
+*<=pivot 在左边   >pivot在右边
+*
+*快排2.0
+*选取最后一个数，当pivot(主元)
+*<pivot 放左边   =pivot的放中间   >pivot放右边   pivot和右边子数组的第一个元素交换
+*优点：搞定了一批 =pivot
+*
+*快排3.0
+*随机选一个数，交换到最后一个数，然后在按照快排2.0去做
+*优点：随机后，如果次数足够多，长期期望  时间复杂度  O(NlogN)
+****************************************************************************/
+
+/***************************************************************************
+*QuickSort  快排
+*时间复杂度 O(NlogN)
+*空间复杂度 O(logN)   最差O(N)   这里的空间是partition返回的数组？
+*空间复杂度，主要是记录中点位置的消耗
+***************************************************************************/
+func QuickSort(arr []int, L, R int) {
+	if L < R {
+		rand := rand.Intn(R - L + 1)
+		Swap(arr, L+rand, R)
+		tmp := partition(arr, L, R)
+		QuickSort(arr, L, tmp[0]-1)
+		QuickSort(arr, tmp[1]+1, R)
+	}
+}
+
+func partition(arr []int, L, R int) []int {
+	less := L - 1
+	more := R
+	cur := L //当前数更好理解
+
+	for ; cur < more; {
+		if arr[cur] < arr[R] {
+			less++
+			Swap(arr, less, cur)
+			cur++
+		} else if arr[cur] > arr[R] {
+			more--
+			Swap(arr, more, cur)
+		} else {
+			cur++
+		}
+	}
+	Swap(arr, more, R)
+	return []int{less + 1, more}
+}
+
+/***************************************************************************
+*HeapInsert  大根堆插入元素
+*某个数处在index位置，能否往上移动
+*与其父节点比较，如果大于父节点，交换，一直往上
+*index元素的位置，就是新插入的元素位置
+*这里需要注意:  -1/2 =0
+***************************************************************************/
+func HeapInsert(arr []int, index int) {
+	for ; arr[index] > arr[(index-1)/2]; {
+		Swap(arr, index, (index-1)/2)
+		index = (index - 1) / 2
+	}
+}
+
+/***************************************************************************
+*HeapIfy  大根堆插入元素
+*某个数处在index位置，能否往下移动
+*找到index位置的左右孩子，index元素和最大孩子比较
+***************************************************************************/
+func HeapIfy(arr []int, index, heapSize int) {
+	left := index*2 + 1 //左孩子的下标
+
+	//循环条件：判断是否有左孩子，其实也就判断是否有孩子
+	for ; left < heapSize; {
+		//左右孩子中，最大一个孩子的下标
+		largestIndex := left
+		if left+1 < heapSize && arr[left+1] > arr[left] {
+			largestIndex = left + 1
+		}
+
+		//index元素和最大孩子的元素比较大小
+		//如果index元素大
+		if arr[largestIndex] <= arr[index] {
+			largestIndex = index
+		}
+
+		if largestIndex == index {
+			break
+		}
+
+		Swap(arr, largestIndex, index)
+		index = largestIndex
+		left = index*2 + 1
 	}
 }
