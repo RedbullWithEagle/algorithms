@@ -16,5 +16,6 @@ func main() {
 	//other.TestSamplePro()
 
 	rand.Seed(time.Now().Unix())
-	sort.ValidFunc(100)
+	//sort.ValidFunc(100)
+	sort.TestSelect1Num()
 }
