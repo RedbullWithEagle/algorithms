@@ -405,15 +405,16 @@ func HeapIfy(arr []int, index, heapSize int) {
 		}
 
 		//index元素和最大孩子的元素比较大小
-		//如果index元素大
 		if arr[largestIndex] <= arr[index] {
 			largestIndex = index
 		}
 
+		//如果最大元素，是index，则停止遍历
 		if largestIndex == index {
 			break
 		}
 
+		//如果最大元素，是孩子，则交换
 		Swap(arr, largestIndex, index)
 		index = largestIndex
 		left = index*2 + 1

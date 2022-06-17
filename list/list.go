@@ -8,6 +8,12 @@ type ListNode struct {
 	Next *ListNode
 }
 
+type DoubleNode struct {
+	Val  int
+	Next *DoubleNode
+	Last *DoubleNode
+}
+
 //makeListNormal ...
 func makeListNormal() *ListNode {
 	head := &ListNode{Val: 1} //形式1
@@ -21,6 +27,28 @@ func makeListNormal() *ListNode {
 	head.Next = ln2
 	ln2.Next = ln3
 	ln3.Next = ln4
+
+	return head
+
+}
+
+//makeDoubleNormal ...
+func makeDoubleNormal() *DoubleNode {
+	head := &DoubleNode{Val: 1} //形式1
+	ln2 := &DoubleNode{Val: 2}
+	ln3 := &DoubleNode{Val: 3}
+
+	ln4 := &DoubleNode{ //形式2
+		Val: 4,
+	}
+
+	head.Next = ln2
+	head.Last = nil
+	ln2.Next = ln3
+	ln2.Last = head
+	ln3.Next = ln4
+	ln3.Last = ln2
+	ln4.Last = ln3
 
 	return head
 
