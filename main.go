@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/algorithms/sort"
+	"github.com/algorithms/array"
 	"math/rand"
 	"time"
 )
@@ -16,5 +16,7 @@ func main() {
 	//other.TestSamplePro()
 
 	rand.Seed(time.Now().Unix())
-	sort.ValidFunc(100)
+	//sort.ValidFunc(100)
+	//sort.TestSelect1Num()
+	array.TestMinStr()
 }
