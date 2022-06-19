@@ -14,6 +14,10 @@ import (
 ****************************************************/
 func SelectionSort(arr []int) {
 	arrLen := len(arr)
+	if arrLen < 2 {
+		return
+	}
+
 	//这里可以写成 arrLen-1，前面的排好了，最后就是有序的
 	for i := 0; i < arrLen-1; i++ {
 		minIndex := i
@@ -117,7 +121,7 @@ func GenerateRandomArr(maxLen, maxValue int) []int {
 
 	arr := make([]int, 0, lenTmp)
 	for i := 0; i < lenTmp; i++ {
-		tmp := rand.Intn(maxValue) - rand.Intn(maxValue+1)
+		tmp := rand.Intn(maxValue+1) - rand.Intn(maxValue)
 		arr = append(arr, int(tmp))
 	}
 
