@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/algorithms/array"
 	"math/rand"
 	"time"
+
+	"github.com/algorithms/tree"
 )
 
 func main() {
@@ -18,5 +19,6 @@ func main() {
 	rand.Seed(time.Now().Unix())
 	//sort.ValidFunc(100)
 	//sort.TestSelect1Num()
-	array.TestMinStr()
+	//array.TestMinStr()
+	tree.TestTree()
 }
