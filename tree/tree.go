@@ -116,26 +116,23 @@ func (node *TreeNode) GetLeafTreeNode(n *TreeNode) {
 func TestTree() {
 
 	//创建一颗树
-	root := CreateTreeNode(3)
+	root := CreateTreeNode(4)
+	node2 := CreateTreeNode(2)
+	node1 := CreateTreeNode(1)
+	node3 := CreateTreeNode(3)
+	node6 := CreateTreeNode(6)
 	node9 := CreateTreeNode(9)
-	node20 := CreateTreeNode(20)
-	node88 := CreateTreeNode(88)
-	node99 := CreateTreeNode(99)
-	node15 := CreateTreeNode(15)
 	node7 := CreateTreeNode(7)
 
-	node188 := CreateTreeNode(188)
-	node777 := CreateTreeNode(777)
 
-	root.Left = node9
-	root.Right = node20
-	node9.Left = node88
-	node9.Right = node99
-	node88.Left = node15
-	node88.Right = node7
-	node7.Right = node188
-	node7.Left = node777
-	zigzagLevelOrder(root)
+	root.Left = node2
+	root.Right = node7
+	node2.Left = node1
+	node2.Right = node3
+	node7.Left = node6
+	node7.Right = node9
+	traverse(root)
+	fmt.Println("abc")
 	//root.Right.Right = CreateTreeNode(9)
 
 	//fmt.Printf("%d\n", root.FindTreeNode(root, 4).Val)
@@ -607,4 +604,18 @@ func BreadthFirstTraverse(root *TreeNode) {
 	for _, v := range ret {
 		fmt.Println(v)
 	}
+}
+
+//反转二叉树
+func traverse(root *TreeNode) {
+	if root ==nil{
+		return
+	}
+
+	traverse(root.Left)
+	tmp := root.Left
+	root.Left = root.Right
+	root.Right = tmp
+	fmt.Println(root.Val)
+	traverse(root.Right)
 }
