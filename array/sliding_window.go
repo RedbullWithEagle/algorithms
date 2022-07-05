@@ -197,8 +197,9 @@ func lengthOfLongestSubstring(s string) int {
 	minLen := 0
 
 	for ; right < lenS; {
-		if _, ok := mapWindow[string(s[right])]; !ok {
-			mapWindow[string(s[right])]++
+		rightStr := s[right]
+		if _, ok := mapWindow[string(rightStr)]; !ok {
+			mapWindow[string(rightStr)]++
 			if len(mapWindow) > minLen {
 				minLen = len(mapWindow)
 			}
@@ -606,7 +607,7 @@ func TestReverse() {
 }
 
 func TestMinStr() {
-	//source := "adbecfebac"
+	source := "adbecfebac"
 	target := 3
 	fmt.Println(intToRoman(target))
 	//target := "ABCC"
@@ -614,5 +615,5 @@ func TestMinStr() {
 	//fmt.Println(minWindowOptimization(source, target))
 	//minWindow(source,target)
 
-	//fmt.Println(lengthOfLongestSubstring(source))
+	fmt.Println(lengthOfLongestSubstring(source))
 }

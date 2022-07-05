@@ -8,6 +8,12 @@ type ListNode struct {
 	Next *ListNode
 }
 
+type DoubleNode struct {
+	Val  int
+	Next *DoubleNode
+	Last *DoubleNode
+}
+
 //makeListNormal ...
 func makeListNormal() *ListNode {
 	head := &ListNode{Val: 1} //形式1
@@ -24,6 +30,26 @@ func makeListNormal() *ListNode {
 
 	return head
 
+}
+
+//makeDoubleNormal ...
+func makeDoubleNormal() *DoubleNode {
+	head := &DoubleNode{Val: 1} //形式1
+	ln2 := &DoubleNode{Val: 2}
+	ln3 := &DoubleNode{Val: 3}
+
+	ln4 := &DoubleNode{ //形式2
+		Val: 4,
+	}
+
+	head.Next = ln2
+	ln2.Next = ln3
+	ln2.Last = head
+	ln3.Next = ln4
+	ln3.Last = ln2
+	ln4.Last = ln3
+
+	return head
 }
 
 //MakeListNode  根据数组生成链表
@@ -65,12 +91,26 @@ func Traverse(l1 *ListNode) {
 //ReverseList 反转链表的实现
 /**************************************************
 *No206:给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+*go的多重赋值，编译器生成了临时变量
 ***************************************************/
 func ReverseList(head *ListNode) *ListNode {
 	cur := head
 	var pre *ListNode = nil
 	for cur != nil {
 		pre, cur, cur.Next = cur, cur.Next, pre //这句话最重要
+	}
+	return pre
+}
+
+//ReverseDoubleList 反转双向链表的实现
+/**************************************************
+*
+***************************************************/
+func ReverseDoubleList(head *DoubleNode) *DoubleNode {
+	cur := head
+	var pre *DoubleNode = nil
+	for cur != nil {
+		pre, cur, cur.Next, cur.Last = cur, cur.Next, pre, cur.Next //这句话最重要
 	}
 	return pre
 }
@@ -194,12 +234,18 @@ func AddTwoNumbers(l1, l2 *ListNode) (head *ListNode) {
 }
 
 func TestAddTwoNum() {
-	L1 := MakeListNode([]int{2, 4, 3})
+	list := makeListNormal()
+	rList := ReverseList(list)
+	fmt.Println(rList)
+	doubleList := makeDoubleNormal()
+	rbList := ReverseDoubleList(doubleList)
+	fmt.Println(rbList)
+	/*L1 := MakeListNode([]int{2, 4, 3})
 	Traverse(L1)
 	fmt.Println(L1)
 	//如果不使用Traversal遍历，而是就地遍历，需要保存L1的值
 	//遍历需要移动
-	/*tmp := L1
+	tmp := L1
 	for tmp !=nil{
 		fmt.Print(tmp.Val," ")
 		tmp = tmp.Next
