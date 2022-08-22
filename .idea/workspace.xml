@@ -2,21 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea8a8e1-de9e-4b99-af8d-cc13eda4eb7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/sort/xor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/array/array.go" beforeDir="false" afterPath="$PROJECT_DIR$/array/array.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/array/sliding_window.go" beforeDir="false" afterPath="$PROJECT_DIR$/array/sliding_window.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/list/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sort/sort.go" beforeDir="false" afterPath="$PROJECT_DIR$/sort/sort.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sync/once.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree/tree.go" beforeDir="false" afterPath="$PROJECT_DIR$/tree/tree.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="GOROOT" url="file://C:/Go" />
+  <component name="GOROOT" path="C:\Program Files\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -36,13 +30,44 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../bin" />
+    <property name="settings.editor.selected.configurable" value="go.sdk" />
+  </component>
+  <component name="RunManager">
+    <configuration name="algorithms" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="algorithms" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="github.com/algorithms" />
+      <directory value="$PROJECT_DIR$" />
+      <output_directory value="$PROJECT_DIR$/../../../bin" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="174" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1658998770664">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="174" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1658998770664" />
+    <state x="740" y="286" key="FileChooserDialogImpl" timestamp="1658998765151">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="286" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1658998765151" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1661137173800">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1661137173800" />
   </component>
 </project>
