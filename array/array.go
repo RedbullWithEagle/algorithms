@@ -5,7 +5,7 @@ import (
 	"sort"
 )
 
-//ReverseArray 反转数组
+// ReverseArray 反转数组
 func ReverseArray(source []int) []int {
 	len := len(source)
 	if len <= 1 {
@@ -14,7 +14,10 @@ func ReverseArray(source []int) []int {
 	right := 0
 	left := len - 1
 
-	for ; right < left; {
+	fmt.Println("9/2:", 9/2)
+	fmt.Println("8/2:", 8/2)
+
+	for right < left {
 		tmp := source[left]
 		source[left] = source[right]
 		source[right] = tmp
@@ -25,14 +28,14 @@ func ReverseArray(source []int) []int {
 	return source
 }
 
-//BSearch 基本的二分查找
+// BSearch 基本的二分查找
 func BSearch(nums []int, target int) int {
 	len := len(nums)
 	left := 0
 	right := len - 1
 
-	//如果这里是<,查找不是在闭区间内，很多值差不到，第一个和最后一个元素取不到
-	for ; left < right; {
+	//如果这里是<,查找不是在闭区间内，很多值查不到，第一个和最后一个元素取不到
+	for left < right {
 		mid := left + (right-left)/2
 
 		if nums[mid] == target {
@@ -47,38 +50,31 @@ func BSearch(nums []int, target int) int {
 	return -1
 }
 
-func testBinarySearch() {
-	nums1 := []int{1, 5, 8, 12, 34, 45, 46, 78, 88}
-	//nums2:= []int{2,2}
-	//nums3:= []int{}
-
-	fmt.Println(nums1)
-	for i := 0; i < len(nums1); i++ {
-		tmp := BSearch(nums1, nums1[i])
-		fmt.Println(nums1[i], "  result is ", tmp)
+/*********************************************
+*No.1 两数之和
+*给定一个整数数组 nums 和一个整数目标值 target，
+*请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+********************************************/
+func twoSum(nums []int, target int) []int {
+	ret := make([]int, 0, 2)
+	mapNums := make(map[int]int, 0)
+	for index, value := range nums {
+		mapNums[value] = index
 	}
-	/*result1 := bs.BSearch(nums1,23)
-	result11 := bs.BSearch(nums1,78)
-	result88 := bs.BSearch(nums1,88)
-	result101 := bs.BSearch(nums1,1)
-	fmt.Println(nums1)
-	fmt.Println("23 result:",result1)
-	fmt.Println("78 result:",result11)
-	fmt.Println("88 result:",result88)
-	fmt.Println("1 result:",result101)
-	fmt.Println("----------------------------")
 
-	result2 := bs.BSearch(nums2,8)
-	result22 := bs.BSearch(nums2,2)
-	fmt.Println("8 result:",result2)
-	fmt.Println("2 result:",result22)
-	fmt.Println("----------------------------")
+	for index, value := range nums {
+		tmp := target - value
+		if v, ok := mapNums[tmp]; ok {
+			if v == index {
+				continue
+			}
+			ret = append(ret, index)
+			ret = append(ret, v)
+			return ret
+		}
+	}
 
-	result3 := bs.BSearch(nums3,8)
-	result33 := bs.BSearch(nums3,2)
-	fmt.Println("8 result:",result3)
-	fmt.Println("2 result:",result33)
-	fmt.Println("----------------------------")*/
+	return ret
 }
 
 func threeSum(nums []int) [][]int {
@@ -129,6 +125,7 @@ func removeDuplicates(nums []int) []int {
 /*********************************************
 *No.26 删除有序数组中的重复项
 *采用双指针算法
+*双指针的前提是数组有序
 ********************************************/
 func removeDuplicatesGF(nums []int) int {
 	n := len(nums)
@@ -167,14 +164,20 @@ func TestSliceMake() {
 	fmt.Println(tmp)
 }
 
-/*********************************************************
+/*
+********************************************************
 数组作为函数参数
 *1.数组作为函数参数时，是值传递，底层数组共享
 *2.底层数组共享：A。如果修改了某个元素的值外面是看不到的
-      B。如果Append元素或者delete元素，也对切片的len修改了，所以外面的切片看不到
+
+	B。如果Append元素或者delete元素，也对切片的len修改了，所以外面的切片看不到
+
 *3.如果实现，里面的修改外面看不到   A.使用Copy函数，这样底层数组不会共享
-   如果想实现增加元素，外面能看到，传递数组指针  *[]int
-*********************************************************/
+
+	如果想实现增加元素，外面能看到，传递数组指针  *[]int
+
+********************************************************
+*/
 func TestSliceFunc(arr []int) {
 	arr[0] = 88
 	fmt.Println("func in arr :")
@@ -317,11 +320,13 @@ func min(x, y int) int {
 	return y
 }
 
-/*********************************************************
+/*
+********************************************************
 No.136 只出现一次的数字
 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。
 找出那个只出现了一次的元素。
-**********************************************************/
+*********************************************************
+*/
 func singleNumber(nums []int) int {
 	/*for i:=0;i<len(nums);i++{
 
