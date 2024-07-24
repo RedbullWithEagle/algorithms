@@ -45,6 +45,17 @@ func Swap(arr []int, i, j int) {
 	arr[i] = arr[i] ^ arr[j]
 }
 
+//交换两个数，代码层面不需要引入tmp变量
+//多重赋值，本事引入了tmp变量
+func SwapByTmp(arr []int, i, j int) {
+	if i == j {
+		return
+	}
+
+	//专业名词叫多重赋值
+	arr[i], arr[j] = arr[j], arr[i]
+}
+
 /****************************************************
 *BubbleSort 冒泡排序
 *每次遍历数组，如果前面的数字大于后面的，交换
@@ -423,4 +434,33 @@ func HeapIfy(arr []int, index, heapSize int) {
 		index = largestIndex
 		left = index*2 + 1
 	}
+}
+
+func QuickSort1(arr []int, l, r int) {
+	if l >= r {
+		return
+	}
+
+	point := partition1(arr, l, r)
+	//这里一定要减1，否则会报栈溢出
+	QuickSort1(arr, l, point-1)
+	QuickSort1(arr, point+1, r)
+
+}
+
+func partition1(arr []int, l, r int) int {
+	//可以在这里随机一个元素，放在最后面
+	pivot := arr[r]
+
+	i := l
+	for j := l; j < r; j++ {
+		if arr[j] < pivot {
+			arr[i], arr[j] = arr[j], arr[i]
+			i++
+		}
+	}
+
+	//上面for循环只是到r-1,这里处理最后一个元素pivot
+	arr[i], arr[r] = arr[r], arr[i]
+	return i
 }

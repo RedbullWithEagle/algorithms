@@ -217,6 +217,11 @@ func AddTwoNumbers(l1, l2 *ListNode) (head *ListNode) {
 			n2 = l2.Val
 			l2 = l2.Next
 		}
+
+		//carry = (tmp + carry) / 10
+		//node := ListNode{}
+		//不能这么写，carry已经赋值了，所以下面的node.Val值不对
+		//node.Val = (tmp + carry) % 10
 		sum := n1 + n2 + carry
 		sum, carry = sum%10, sum/10
 		if head == nil {
@@ -227,19 +232,25 @@ func AddTwoNumbers(l1, l2 *ListNode) (head *ListNode) {
 			tail = tail.Next
 		}
 	}
+
+	//需要考虑最高位进位的问题
 	if carry > 0 {
-		tail.Next = &ListNode{Val: carry}
+		if head ==nil{
+			head = &ListNode{Val: carry}
+		}else{
+			tail.Next = &ListNode{Val: carry}
+		}
 	}
 	return
 }
 
 func TestAddTwoNum() {
-	list := makeListNormal()
+	/*list := makeListNormal()
 	rList := ReverseList(list)
 	fmt.Println(rList)
 	doubleList := makeDoubleNormal()
 	rbList := ReverseDoubleList(doubleList)
-	fmt.Println(rbList)
+	fmt.Println(rbList)*/
 	/*L1 := MakeListNode([]int{2, 4, 3})
 	Traverse(L1)
 	fmt.Println(L1)
@@ -256,6 +267,11 @@ func TestAddTwoNum() {
 	L2 := MakeListNode([]int{5, 6, 4})
 	Traversal(L2)
 
-	result := AddTwoNumbers(L1, L2)
+	result := addTwoNumbers(L1, L2)
 	Traversal(result)*/
+	L1 := MakeListNode([]int{2, 4, 3})
+	L2 := MakeListNode([]int{5, 6, 4})
+	result := AddTwoNumbers(L1, L2)
+	Traversal(result)
+
 }

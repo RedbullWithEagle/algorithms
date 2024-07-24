@@ -187,42 +187,36 @@ func minWindowOptimization(s string, t string) string {
 *给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
 *****************************************************/
 func lengthOfLongestSubstring(s string) int {
-	lenS := len(s)
-	if lenS <= 1 {
-		return lenS
-	}
+	n := len(s)
+	//这里没有必要判断n ==0
+	//s[i]的类型是uin8
+	m := make(map[uint8]int, n)
 
-	mapWindow := make(map[string]int)
-	var left, right int
-	minLen := 0
+	left, right := 0, 0
+	maxLen := 0
 
-	for ; right < lenS; {
-		rightStr := s[right]
-		if _, ok := mapWindow[string(rightStr)]; !ok {
-			mapWindow[string(rightStr)]++
-			if len(mapWindow) > minLen {
-				minLen = len(mapWindow)
-			}
-			right++
-			continue
-		}
+	//结束条件：当right走到最后
+	for right < n {
+		//保存right索引位置的字符
+		r := s[right]
+		right++
+		m[r]++
 
-		//如果在里面
-		for ; left < right; {
-			delete(mapWindow, string(s[left]))
-			if s[left] == s[right] {
-				left++
-				break
-			}
+		//需要缩小窗口，一直缩小，直到m[r]=1为止
+		//这样能确保里面的元素不重复
+		//缩小左侧窗口的结束条件，是新加入的元素的个数为1
+		for m[r] > 1 {
+			l := s[left]
 			left++
+			m[l]--
+		}
+
+		if right-left > maxLen {
+			maxLen = right - left
 		}
 	}
 
-	if minLen == lenS+1 {
-		return 0
-	}
-
-	return minLen
+	return maxLen
 }
 
 /***************************************************
@@ -576,8 +570,6 @@ func isValid(s string) bool {
 	return true
 }
 
-
-
 func TestReverse() {
 	strSign := []string{"()", "()[]{}", "(]", "([)]", "{[]}"}
 	for _, v := range strSign {
@@ -607,13 +599,88 @@ func TestReverse() {
 }
 
 func TestMinStr() {
-	source := "adbecfebac"
-	target := 3
-	fmt.Println(intToRoman(target))
-	//target := "ABCC"
+	source := "ADOBECODEBANC"
+	//target := 3
+	//fmt.Println(intToRoman(target))
+	target := "ABC"
 	//fmt.Println(GetMinString(source,target))
 	//fmt.Println(minWindowOptimization(source, target))
-	//minWindow(source,target)
+	fmt.Println(minWindowV1(source, target))
 
-	fmt.Println(lengthOfLongestSubstring(source))
+	//fmt.Println(lengthOfLongestSubstring(source))
+}
+
+func lengthOfLongestSubstringM(s string) int {
+	l := len(s)
+	m := make(map[uint8]int, l)
+
+	left := 0
+	right := 0
+	maxLen := 0
+	for right < l {
+		c := s[right]
+		right++
+		m[c]++
+
+		for m[c] > 1 {
+			d := s[left]
+			left++
+			m[d]--
+		}
+
+		if right-left > maxLen {
+			maxLen = right - left
+		}
+	}
+
+	return maxLen
+}
+
+func minWindowV1(s string, t string) string {
+	need := make(map[uint8]int)
+	window := make(map[uint8]int)
+
+	for _, v := range t {
+		need[uint8(v)]++
+	}
+
+	left, right := 0, 0
+	valid := 0
+	start := 0
+	count := math.MaxInt32
+	for right < len(s) {
+		r := s[right]
+		right++
+
+		if need[r] > 0 {
+			window[r]++
+			if window[r] == need[r] {
+				valid++
+			}
+		}
+
+		for valid == len(need) {
+			if count > (right - left) {
+				count = right - left
+				start = left
+			}
+
+			//d是左侧要移出窗口的
+			d := s[left]
+			left++
+
+			if need[d] > 0 {
+				if window[d] == need[d] {
+					valid--
+				}
+				window[d]--
+			}
+		}
+
+	}
+	if count == INT_MAX {
+		return ""
+	}
+
+	return s[start:(start + count)]
 }

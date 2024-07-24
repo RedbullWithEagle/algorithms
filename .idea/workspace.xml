@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="853511e3-4f98-4d6b-80be-bd682ce1a587" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/array/array.go" beforeDir="false" afterPath="$PROJECT_DIR$/array/array.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/array/sliding_window.go" beforeDir="false" afterPath="$PROJECT_DIR$/array/sliding_window.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/list.go" beforeDir="false" afterPath="$PROJECT_DIR$/list/list.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sort/sort.go" beforeDir="false" afterPath="$PROJECT_DIR$/sort/sort.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sort/sort_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/sort/sort_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree/tree.go" beforeDir="false" afterPath="$PROJECT_DIR$/tree/tree.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="C:\Program Files\Go" />
   <component name="Git.Settings">
@@ -22,15 +53,17 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../bin" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
-    <configuration name="algorithms_main" type="GoApplicationRunConfiguration" factoryName="Go Application">
+  <component name="RunManager" selected="Go Build.algorithms_main">
+    <configuration name="algorithms_main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="algorithms" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-i" />
@@ -41,22 +74,80 @@
       <output_directory value="$PROJECT_DIR$/../../../bin" />
       <method v="2" />
     </configuration>
+    <configuration name="TestBSearch in github.com/algorithms/array" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="algorithms" />
+      <working_directory value="$PROJECT_DIR$/array" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/algorithms/array" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^TestBSearch$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.algorithms_main" />
+        <item itemvalue="Go Test.TestBSearch in github.com/algorithms/array" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="174" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1661137764749">
+    <state width="1877" height="104" key="GridCell.Tab.0.bottom" timestamp="1721790774973">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="174" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1661137764749" />
-    <state x="740" y="286" key="FileChooserDialogImpl" timestamp="1661137762925">
+    <state width="1877" height="104" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1721790774973" />
+    <state width="1877" height="104" key="GridCell.Tab.0.center" timestamp="1721790774972">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="286" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1661137762925" />
+    <state width="1877" height="104" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1721790774972" />
+    <state width="1877" height="104" key="GridCell.Tab.0.left" timestamp="1721790774972">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="104" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1721790774972" />
+    <state width="1877" height="104" key="GridCell.Tab.0.right" timestamp="1721790774973">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="104" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1721790774973" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/tree/tree.go</url>
+          <line>552</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/tree/tree.go</url>
+          <line>198</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/array/array_test.go</url>
+          <line>18</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -32,8 +32,8 @@ func BSearch(nums []int, target int) int {
 	right := len - 1
 
 	//如果这里是<,查找不是在闭区间内，很多值差不到，第一个和最后一个元素取不到
-	for ; left < right; {
-		mid := left + (right-left)/2
+	for ; left <= right; {
+		mid := left + (right-left)>>1
 
 		if nums[mid] == target {
 			return mid
@@ -45,40 +45,6 @@ func BSearch(nums []int, target int) int {
 	}
 
 	return -1
-}
-
-func testBinarySearch() {
-	nums1 := []int{1, 5, 8, 12, 34, 45, 46, 78, 88}
-	//nums2:= []int{2,2}
-	//nums3:= []int{}
-
-	fmt.Println(nums1)
-	for i := 0; i < len(nums1); i++ {
-		tmp := BSearch(nums1, nums1[i])
-		fmt.Println(nums1[i], "  result is ", tmp)
-	}
-	/*result1 := bs.BSearch(nums1,23)
-	result11 := bs.BSearch(nums1,78)
-	result88 := bs.BSearch(nums1,88)
-	result101 := bs.BSearch(nums1,1)
-	fmt.Println(nums1)
-	fmt.Println("23 result:",result1)
-	fmt.Println("78 result:",result11)
-	fmt.Println("88 result:",result88)
-	fmt.Println("1 result:",result101)
-	fmt.Println("----------------------------")
-
-	result2 := bs.BSearch(nums2,8)
-	result22 := bs.BSearch(nums2,2)
-	fmt.Println("8 result:",result2)
-	fmt.Println("2 result:",result22)
-	fmt.Println("----------------------------")
-
-	result3 := bs.BSearch(nums3,8)
-	result33 := bs.BSearch(nums3,2)
-	fmt.Println("8 result:",result3)
-	fmt.Println("2 result:",result33)
-	fmt.Println("----------------------------")*/
 }
 
 func threeSum(nums []int) [][]int {
@@ -111,7 +77,7 @@ func threeSum(nums []int) [][]int {
 *不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
 *
 ********************************************/
-func removeDuplicates(nums []int) []int {
+func RemoveDuplicates(nums []int) []int {
 	nLen := len(nums)
 	if nLen <= 1 {
 		return nums
@@ -130,7 +96,7 @@ func removeDuplicates(nums []int) []int {
 *No.26 删除有序数组中的重复项
 *采用双指针算法
 ********************************************/
-func removeDuplicatesGF(nums []int) int {
+func RemoveDuplicatesGF(nums []int) int {
 	n := len(nums)
 	if n == 0 {
 		return 0
@@ -206,22 +172,7 @@ func TestArray() {
 	fmt.Println(countAndSay(5))
 	fmt.Println(countAndSay(6))
 	fmt.Println(countAndSay(7))*/
-	nums := []int{386987186, 364389196, 50977443, 50977443, 399358080, 50977443, 409259588, 409259588, 409259588,
-		409259588, 409259588, 409259588, 409259588, 409259588, 386281270, 386281270, 386281270, 25298682, 25298682,
-		25298682, 25298682, 25298682, 25298682, 25298682, 25298682, 409259588, 409259588, 409259588, 409259588,
-		409259588, 409259588, 409259588, 409259588, 409259588, 409259588, 409259588, 409259588, 409259588,
-		223542312, 223542312, 409259588, 386281270, 409259588, 406869766, 332315507, 410071207, 399309372,
-		406869766, 406869766, 406869766, 406869766, 406869766, 406869766, 406869766, 406869766, 406869766,
-		406869766, 406869766, 406869766, 406869766, 406869766, 406869766, 406869766, 406869766, 406869766,
-		406869766, 375799397, 333034168, 164687972, 405973939, 178781576, 372718266, 80992258, 351287809,
-		334266133, 426676632, 426676632, 388437659, 419133949, 109356078, 431761173, 429719767, 343820848,
-		91087337, 343820848, 343820848, 343820848, 40457729, 400459887, 400459887, 400459887, 400459887,
-		400459887, 400459887, 400459887, 400459887, 400459887, 331430611, 165357821, 215053565, 179283002,
-		219597372, 219597372, 219597372, 219597372, 219597372, 219597372, 219597372, 219597372, 343820848,
-		427562206, 427562206, 427562206, 427562206, 427562206, 427562206, 427562206, 136808852, 136808852,
-		136808852, 136808852, 136808852, 136808852, 136808852, 136808852, 136808852, 136808852, 136808852}
 
-	fmt.Println(removeDuplicates(nums))
 	/*l1 := makeListNode([]int{1,2,3,4,5})
 	tmp := removeNthFromEnd(l1, 2)
 	Traversal(tmp)
@@ -315,17 +266,4 @@ func min(x, y int) int {
 		return x
 	}
 	return y
-}
-
-/*********************************************************
-No.136 只出现一次的数字
-给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。
-找出那个只出现了一次的元素。
-见xor.go  select1Num()
-**********************************************************/
-func singleNumber(nums []int) int {
-	/*for i:=0;i<len(nums);i++{
-
-	}*/
-	return 0
 }

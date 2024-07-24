@@ -41,7 +41,7 @@ func TestSortArray(t *testing.T) {
 func sliceEq(a, b []int) bool {
 	// If one is nil, the other must also be nil.
 	if (a == nil) != (b == nil) {
-		return false;
+		return false
 	}
 
 	if len(a) != len(b) {

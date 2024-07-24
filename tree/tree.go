@@ -1,6 +1,7 @@
 package tree
 
 import (
+	"container/list"
 	"fmt"
 	"math"
 )
@@ -124,15 +125,14 @@ func TestTree() {
 	node9 := CreateTreeNode(9)
 	node7 := CreateTreeNode(7)
 
-
 	root.Left = node2
 	root.Right = node7
 	node2.Left = node1
 	node2.Right = node3
 	node7.Left = node6
 	node7.Right = node9
-	traverse(root)
-	fmt.Println("abc")
+
+	fmt.Println(minDepthBFSList(root))
 	//root.Right.Right = CreateTreeNode(9)
 
 	//fmt.Printf("%d\n", root.FindTreeNode(root, 4).Val)
@@ -545,6 +545,39 @@ func minDepth(root *TreeNode) int {
 	return minD + 1
 }
 
+func minDepthBFSList(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	l := list.New()
+	l.PushBack(root)
+	depth := 1
+	for l.Len() != 0 {
+		sz := l.Len()
+		for i := 0; i < sz; i++ {
+			// 1.获取最后一个元素的值，然后映射到之前的结构,如何映射，见下面
+			// 2.这里要使用队列，删除的时候，从头部，增加元素放为尾部
+			//  否认得出的结果不正确
+			cur := l.Back().Value.(*TreeNode)
+			l.Remove(l.Back())
+			if cur.Left == nil && cur.Right == nil {
+				return depth
+			}
+
+			if cur.Left != nil {
+				l.PushBack(cur.Left)
+			}
+
+			if cur.Right != nil {
+				l.PushBack(cur.Right)
+			}
+		}
+		depth++
+	}
+	return depth
+}
+
 //中序遍历  方法一
 func inorderTraversalTV1(root *TreeNode) []int {
 	res := make([]int, 0)
@@ -608,7 +641,7 @@ func BreadthFirstTraverse(root *TreeNode) {
 
 //反转二叉树
 func traverse(root *TreeNode) {
-	if root ==nil{
+	if root == nil {
 		return
 	}
 
